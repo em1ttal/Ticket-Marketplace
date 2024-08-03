@@ -385,3 +385,4 @@ I es pot accedir mitjançant el nom del servei i el domini **onrender.com**. Per
 - La API a l'adreça https://ub-sd-p2-2024-B07-API.onrender.com
 - Al frontend a l'adreça https://ub-sd-p2-2024-B07.onrender.com
 # Ticket-Marketplace
+# Ticket-Marketplace
