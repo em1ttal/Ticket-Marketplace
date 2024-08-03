@@ -1,8 +1,10 @@
-#  Pràctica 2 Sofware Distribuït
+# Ticket Marketplace
+
 
 ## General Information
 This is a Full-Stack development project done in my Distirbuted Systems Class. Below are the instructions (Step 1: "Primers passos") to be able to properly configure the project for this who want to try it out. Step 2.1 provides the information to view the full documentation.
 
+##  Pràctica 2 Sofware Distribuït
 # Enunciado
 
 Aquesta plantilla és una simplificació d'una estructura "full-stack" que podeu trobar en aquest repositori:
@@ -275,112 +277,3 @@ Podeu previsualitzar l'estructura de la documentació seguint els següents pass
 1. Descarregueu l'executable per al vostre sistema del [repositori de mdBook](https://github.com/rust-lang/mdBook/releases).
 2. Des de l'arrel del repositori, executeu ```mdbook serve docs``` i accedir a la previsualització accedint a <http://localhost:3000>.
 3. Des de l'arrel del repositori, executeu ```mdbook build docs``` i es generarà la versió html de la documentació.
-
-# 3. Desplegament a producció
-
-Generalment en el desenvolupament d'aplicacions informàtiques es defineixen diferents entorns, que ajuden a assegurar la qualitat
-del software. Dos dels entorns que no poden faltar són el de **desenvolupament** i **producció**. El de desenvolupament
-està pensat perquè reflecteixi de forma ràpida els canvis en el codi, agilitzant la tasca dels desenvolupadors i facilitant la depuració del codi.
-La de producció pel contrari, acostuma a incorporar optimitzacions del codi per minimitzar-ne la mida i maximitzar-ne el rendiment.
-
-Els desplegaments que hem vist del backend a la secció [1.1.4](#1.1.4.-Aixecar-el-backend) i del frontend a la secció [1.2.4](#1.2.4.-Executar-el-frontend),
-correspondrien a l'entorn de **desenvolupament**.
-
-L'entorn de **producció** es desplegarà cada vegada que actualitzem el contingut de la **branca principal** del repositori. En l'actualitat, el més habitual és
-utilitzar un entorn cloud (com Amazon Web Services o Microsoft Azure) en comptes de servidors físics. En el nostre cas utilitzarem la plataforma cloud [render.com](https://render.com/),
-que ens permet fer el desplegament d'aplicacions petites de forma gratuïta.
-
-## 3.1 Crear un compte d'usuari
-
-El primer pas serà donar-nos d'alta a [render.com](https://render.com/). Podem crear el compte directament a partir del nostre compte de GitHub.
-
-![image](docs/images/render_register.png)
-
-Un cop tinguem un compte, podem veure la llista de serveis que ens ofereix la plataforma:
-
-![image](docs/images/render_services.png)
-
-Els que ens interessaran en el nostre cas seran:
-- **PostreSQL:** Ens permetrà crear una base de dades al núvol.
-- **Web Services:** Ens permetrà desplegar el backend al núvol.
-- **Static Sites:** Ens permetrà desplegar el frontend al núvol.
-
-Cal ser conscients que en utilitzar el servei gratuit, tindrem una sèrie de limitacions en tot el que despleguem,
-com l'espai que podem utilitzar, el trànsit d'usuaris o els temps de resposta, que seràn més grans que en un desplegament
-de pagament. En cas d'innactivitat, el sistema quedarà aturat, i per tant la primera vegada que vulguem tornar a utilitzar-lo 
-ens trigarà considerablement (aproximadament 1-2 minuts).
-
-## 3.2 Crear una base de dades
-
-Sel·leccionarem el servei PostgreSQL i demanarem crear una nova base de dades. Com a la base de dades hi haurà informació
-dels usuaris, és important sel·leccionar una regió dins d'europa, evitant així problemes amb la llei de protecció de dades. 
-
-![image](docs/images/render_db1.png)
-
-Un cop creada la base de dades, cal agafar la seva informació. Generalment, trobarem informació d'accés intern 
-(quan accedim des d'altres serveis de la mateixa estructura de núvol) i informació externa (fora del núvol):
-
-![image](docs/images/render_db2.png)
-
-
-## 3.3 Crear un servei web
-
-Crearem un servei web per desplegar el backend. Si us fixeu en el codi del backend, podreu veure que conté un fitxer **Dockerfile**.
-Aquest fitxer defineix la recepta per desplegar el backend en forma de contenidor [Docker](https://www.docker.com/).
-Això ens facilitarà el seu desplegament en serveis al núvol, ja que podem controlar-ne totalment les dependències i context.
-
-Per desplegar-lo, anirem a crear un now servei web i li direm que el volem desplegar des d'un repositori Git:
-
-![image](docs/images/web_service1.png)
-
-Ens preguntarà la informació de repositori. Cal sel·leccionar el repositori corresponent al nostre grup:
-
-![image](docs/images/web_service2.png)
-
-Ara caldrà entrar la informació del web service, indicant:
-
-- **Name:** nom en el format **ub_sd_p2_2024_[GXX]_API** on **[GXX]** indica el vostre grup, per exemple **B07**.
-- **Region:** regió on es desplega. És molt recomanable utilitzar la mateixa que amb la base de dades
-- **Branch:** branca des de la qual es desplegarà. Triarem la branca principal **main**. 
-- **Root Directory:** carpeta que conté el codi a desplegar. En el nostre cas cal sel·leccionar **backend**.
-- **Runtime:** sistema sobre el qual funcionarà el nostre servei. Triarem **Docker**.
-
-![image](docs/images/web_service3.png)
-
-Finalment, necessitarem configurar el servei web. Cal proporcionar la informació de configuració, igual que hem fet al
-punt [1.1.2](#1.1.2.-Configuració-del-backend), però en comptes de posar-ho en un fitxer ```.env``` ho definirem directament
-com a variables d'entorn (idealment els passwords caldria passar-los com a secrets, però no entrarem per simplificar):
-
-![image](docs/images/web_service4.png)
-
-Aquest servei de desplegament espera que els serveis escoltin al port 10000, per tant, a les variables de configuració
-anteriors caldrà afegir-n'hi una d'addicional:
-
-**BIND**=0.0.0.0:10000
-
-## 3.4 Crear una pàgina web
-
-Ja només ens falta desplegar el frontend, el qual correspon a un conjunt de fitxers estàtics. Igual que en el cas anterior,
-indicarem que volem desplegar des d'un repositori de codi. Caldrà proporcionar les següents dades:
-
-- **Name:** nom en el format **ub_sd_p2_2024_[GXX]** on **[GXX]** indica el vostre grup, per exemple **B07**.
-- **Branch:** branca des de la qual es desplegarà. Triarem la branca principal **main**. 
-- **Root Directory:** carpeta que conté el codi a desplegar. En el nostre cas cal sel·leccionar **frontend**.
-- **Build Command:** quina comanda s'utilitzarà per generar els fitxers estàtics. Caldrà instal·lar les dependències i compilar, per tan escriurem ```npm install; npm run build```
-- **Publish directory:** carpeta d'on agafar els fitxers generats en la fase de construcció. Posarem **dist**.
-
-![image](docs/images/web_static1.png)
-
-
-## 3.5 Accedir a la versió en producció
-
-Si tot ha anat com és d'esperar, haurieu de poder veure en el tauler de control els tres serveis amb una icona verda:
-
-![image](docs/images/render_dashboard.png)
-
-I es pot accedir mitjançant el nom del servei i el domini **onrender.com**. Per exemple, el grup **B07**, hauria de poder accedir a:
-
-- La API a l'adreça https://ub-sd-p2-2024-B07-API.onrender.com
-- Al frontend a l'adreça https://ub-sd-p2-2024-B07.onrender.com
-# Ticket-Marketplace
-# Ticket-Marketplace
