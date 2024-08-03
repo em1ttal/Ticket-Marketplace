@@ -3,15 +3,6 @@
 ## General Information
 This is a Full-Stack development project done in my Distirbuted Systems Class. Below are the instructions (part 1 "Primers passos") to be able to properly configure the project for this who want to try it out.
 
-## Informactión del grupo
-Miembros: Eshaan Mittal (em1ttal) y Paula Bezares (pbeza02)
-
-Docs:https://softwaredistribuitub-2024.github.io/practica2-a07/
-
-Render: 
-- API: No funciona el deploy
-- Frontend: https://ub-sd-p2-2024-a07.onrender.com/
-
 # Enunciado
 
 Aquesta plantilla és una simplificació d'una estructura "full-stack" que podeu trobar en aquest repositori:
