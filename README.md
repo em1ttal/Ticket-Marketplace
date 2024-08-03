@@ -1,7 +1,7 @@
 #  Pràctica 2 Sofware Distribuït
 
 ## General Information
-This is a Full-Stack development project done in my Distirbuted Systems Class. Below are the instructions (part 1 "Primers passos") to be able to properly configure the project for this who want to try it out.
+This is a Full-Stack development project done in my Distirbuted Systems Class. Below are the instructions (part 1 "Primers passos") to be able to properly configure the project for this who want to try it out. Step 2.1 provides the information to view the full documentation.
 
 # Enunciado
 
