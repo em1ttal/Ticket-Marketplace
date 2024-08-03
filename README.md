@@ -1,15 +1,7 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/1uqmYDZK)
-[![Test](https://github.com/xbaro/template_fastapi_vue_fl0/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/xbaro/template_fastapi_vue_fl0/actions/workflows/test.yml)
 #  Pràctica 2 Sofware Distribuït
 
-## Informactión del grupo
-Miembros: Eshaan Mittal (em1ttal) y Paula Bezares (pbeza02)
-
-Docs:https://softwaredistribuitub-2024.github.io/practica2-a07/
-
-Render: 
-- API: No funciona el deploy
-- Frontend: https://ub-sd-p2-2024-a07.onrender.com/
+## General Information
+This is a Full-Stack development project done in my Distirbuted Systems Class. Below are the instructions (part 1 "Primers passos") to be able to properly configure the project for this who want to try it out.
 
 # Enunciado
 
