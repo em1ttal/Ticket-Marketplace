@@ -101,6 +101,7 @@ PROJECT_NAME=sd_app
 # Dades de l'administrador per defecte
 FIRST_SUPERUSER=XXXX
 FIRST_SUPERUSER_PASSWORD=XXXX
+BACKEND_CORS_ORIGINS=http://localhost:8080
 ```
 
 ### 1.1.3. Creació de la base de dades
@@ -242,6 +243,11 @@ Podeu comprovar que s'ha generat correctament arrancant un servidor web en el di
 python3 -m http.server
 ```
 
+### 1.2.6 Add bootstrap
+
+```bash
+npm install --save bootstrap-vue bootstrap
+```
 
 # 2. Documentació
 
